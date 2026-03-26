@@ -4,6 +4,7 @@ import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { CERTIFICATES_COUNT } from '@/data/certificates';
 import { specializations } from '@/data/specializations';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -97,7 +98,7 @@ export default function Specializations() {
     },
     {
       icon: '🏆',
-      value: '6',
+      value: String(CERTIFICATES_COUNT),
       label: 'شهادات',
       color: 'from-purple-500 to-pink-500',
     },

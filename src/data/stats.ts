@@ -6,6 +6,7 @@
  * @module data/stats
  */
 
+import { CERTIFICATES_COUNT } from '@/data/certificates';
 import type { StatItem, Stats } from '@/types/data';
 
 /**
@@ -13,7 +14,7 @@ import type { StatItem, Stats } from '@/types/data';
  */
 export const stats: Stats = {
   years: 5,
-  certifications: 6,
+  certifications: CERTIFICATES_COUNT,
   clients: '500+',
   availability: 'Online',
 };
@@ -33,7 +34,7 @@ export const statItems: StatItem[] = [
   },
   {
     id: 'certifications',
-    value: 6,
+    value: CERTIFICATES_COUNT,
     label: 'Certifications',
     icon: '🏆',
     description: 'Professional certifications and credentials',

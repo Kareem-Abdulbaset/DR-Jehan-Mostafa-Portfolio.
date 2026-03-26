@@ -32,14 +32,14 @@ Professional portfolio website for Dr. Jehan Mostafa, a certified clinical nutri
 - **Client:** Dr. Jehan Mostafa Atya Abo Senna
 - **Industry:** Healthcare - Clinical Nutrition
 - **Experience:** 5 Years
-- **Certifications:** 6 Professional Credentials
+- **Certifications:** 11 Professional Credentials
 - **Service Model:** Online Consultations
 - **Target Market:** Egypt & MENA Region
 
 ### Project Goals
 
 1. Create a professional online presence showcasing credentials
-2. Display 6 certifications with featured EISNO membership
+2. Display 11 certifications with featured SCOPE international accreditation
 3. Enable direct client booking via WhatsApp Business
 4. Optimize for mobile-first audience (60%+ expected traffic)
 5. Achieve Lighthouse performance score 90+
@@ -221,7 +221,7 @@ dr-jehan-portfolio/
 │
 ├── public/                         # Static assets (served directly)
 │   ├── images/
-│   │   ├── certificates/           # 6 certificate images (WebP format)
+│   │   ├── certificates/           # 11 certificate images
 │   │   │   ├── cert-1-cosmetology.webp
 │   │   │   ├── cert-2-eisno.webp         # Featured certificate
 │   │   │   ├── cert-3-nutrition-diploma.webp
@@ -317,7 +317,7 @@ dr-jehan-portfolio/
 │   │   └── seo.ts                  # SEO helpers
 │   │
 │   ├── data/                       # Static data (TypeScript)
-│   │   ├── certificates.ts         # Array of 6 certificates
+│   │   ├── certificates.ts         # Array of 11 certificates
 │   │   ├── specializations.ts      # Specialization areas
 │   │   ├── services.ts             # Services offered (4 services)
 │   │   ├── social-links.ts         # Social media links
@@ -691,7 +691,7 @@ Follow the phases in `DEVELOPMENT-PHASES.md` sequentially
 ### 4. Client Assets Needed
 
 - Profile photo (high resolution)
-- 6 certificates (scanned, high quality)
+- 11 certificates (scanned, high quality)
 - Logo (vector format)
 - WhatsApp Business number
 - Social media links
