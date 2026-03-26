@@ -9,6 +9,8 @@ const withBundleAnalyzer =
 const nextConfig: NextConfig = {
   // Image optimization - Enhanced for performance
   images: {
+    // Serve local portfolio assets directly to avoid Vercel optimizer quota failures.
+    unoptimized: true,
     formats: ['image/avif', 'image/webp'], // AVIF first for better compression
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
