@@ -27,11 +27,11 @@ export type CertificateCategory =
  */
 export const CERTIFICATE_CATEGORY_LABELS: Record<CertificateCategory, string> =
   {
-    professional: 'Professional',
-    membership: 'Membership',
-    training: 'Training',
-    experience: 'Experience',
-    diploma: 'Diploma',
+    professional: 'اعتماد مهني',
+    membership: 'عضوية',
+    training: 'تدريب',
+    experience: 'خبرة',
+    diploma: 'دبلومة',
   };
 
 // ============================================================================
@@ -77,6 +77,12 @@ export interface Certificate {
 
   /** Whether this certificate should be highlighted (optional) */
   featured?: boolean;
+
+  /** Short badge to emphasize the credential (optional) */
+  badge?: string;
+
+  /** Secondary short label shown near the title (optional) */
+  highlight?: string;
 
   /** Certificate/credential ID number (optional) */
   credentialId?: string;

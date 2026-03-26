@@ -3,6 +3,7 @@ import { Inter, Poppins } from 'next/font/google';
 import './globals.css';
 import { SITE_INFO } from '@/lib/constants';
 import PerformanceMonitor from '@/components/performance/PerformanceMonitor';
+import FloatingScopeBadge from '@/components/ui/FloatingScopeBadge';
 
 // Configure Inter font for body text
 const inter = Inter({
@@ -111,6 +112,7 @@ export default function RootLayout({
         {/* Core Web Vitals monitoring (only renders in development) */}
         <PerformanceMonitor />
         {children}
+        <FloatingScopeBadge />
       </body>
     </html>
   );

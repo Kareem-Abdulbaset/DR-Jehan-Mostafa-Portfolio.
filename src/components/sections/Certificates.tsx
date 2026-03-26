@@ -8,7 +8,10 @@ import SectionWrapper from '@/components/layout/SectionWrapper';
 import Lightbox from '@/components/ui/Lightbox';
 import Badge from '@/components/ui/Badge';
 import { certificates } from '@/data/certificates';
-import type { Certificate } from '@/types/certificate';
+import {
+  CERTIFICATE_CATEGORY_LABELS,
+  type Certificate,
+} from '@/types/certificate';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,6 +19,7 @@ export default function Certificates() {
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
+  const totalCertificates = certificates.length;
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -41,7 +45,6 @@ export default function Certificates() {
   return (
     <SectionWrapper id="certificates" background="gray">
       <div ref={sectionRef}>
-        {/* Header */}
         <div className="mx-auto mb-12 max-w-3xl text-center sm:mb-16">
           <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary transition-colors duration-300 hover:bg-primary/20">
             🎓 الاعتمادات المهنية
@@ -52,48 +55,58 @@ export default function Certificates() {
           </h2>
 
           <p className="px-4 text-base text-gray-600 sm:text-lg">
-            تعلم مستمر وتطوير مهني قائم على أحدث الأدلة العلمية.
+            تعلم مستمر وتطوير مهني قائم على أحدث الأدلة العلمية والاعتمادات
+            الموثوقة.
           </p>
         </div>
 
-        {/* Certificates Grid */}
         <div
           ref={cardsRef}
           className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3"
         >
-          {certificates.map((cert, index) => (
-            <div
+          {certificates.map((cert) => (
+            <button
               key={cert.id}
+              type="button"
               onClick={() => setSelectedCert(cert)}
-              className="group cursor-pointer"
+              aria-label={`عرض ${cert.title}`}
+              className={`group w-full cursor-pointer border-0 bg-transparent p-0 text-right focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-4 ${cert.featured ? 'sm:col-span-2 lg:col-span-2' : ''}`}
             >
               <div
-                className={`relative h-full transform overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-500 hover:-translate-y-3 hover:scale-[1.02] hover:shadow-2xl ${cert.featured ? 'ring-2 ring-secondary ring-offset-2' : ''} `}
+                className={`relative h-full overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-500 hover:-translate-y-3 hover:scale-[1.02] hover:shadow-2xl ${cert.featured ? 'shadow-[0_24px_70px_rgba(212,175,55,0.2)] ring-2 ring-secondary/70 ring-offset-4' : ''}`}
               >
-                {/* Featured Badge */}
+                {cert.featured && (
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-secondary/10 via-white to-primary/10" />
+                )}
+
                 {cert.featured && (
                   <div className="absolute right-4 top-4 z-10">
                     <Badge
                       variant="secondary"
                       size="sm"
-                      className="animate-pulse shadow-lg"
+                      rounded
+                      className="animate-pulse border-secondary/30 bg-secondary/15 px-3 py-1 shadow-lg"
                     >
-                      ⭐ مميز
+                      {cert.badge || 'مميز'}
                     </Badge>
                   </div>
                 )}
 
-                {/* Image */}
-                <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
+                <div
+                  className={`relative overflow-hidden bg-gray-100 ${cert.featured ? 'aspect-[16/9] sm:aspect-[18/9]' : 'aspect-[4/3]'}`}
+                >
                   <Image
                     src={cert.image}
                     alt={cert.title}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    sizes={
+                      cert.featured
+                        ? '(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 66vw'
+                        : '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
+                    }
                   />
 
-                  {/* Overlay */}
                   <div className="absolute inset-0 flex items-end justify-center bg-gradient-to-t from-black/60 via-black/0 to-transparent pb-8 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                     <span className="flex items-center gap-2 rounded-full bg-white/20 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm">
                       <svg
@@ -109,55 +122,69 @@ export default function Certificates() {
                           d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
                         />
                       </svg>
-                      عرض
+                      عرض الشهادة
                     </span>
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="p-5 sm:p-6">
-                  <div className="mb-2 flex items-center justify-between text-xs text-gray-500 sm:text-sm">
+                <div className="relative p-5 sm:p-6">
+                  <div className="mb-2 flex items-center justify-between gap-3 text-xs text-gray-500 sm:text-sm">
                     <span className="font-semibold text-primary">
                       {cert.issuer}
                     </span>
-                    <span className="rounded-full bg-gray-100 px-2 py-1">
+                    <span className="shrink-0 rounded-full bg-gray-100 px-2 py-1">
                       {cert.date}
                     </span>
                   </div>
+
+                  {cert.highlight && (
+                    <div className="mb-3">
+                      <span className="inline-flex items-center rounded-full bg-secondary/10 px-3 py-1 text-xs font-semibold tracking-[0.08em] text-secondary-dark">
+                        {cert.highlight}
+                      </span>
+                    </div>
+                  )}
 
                   <h3 className="mb-2 line-clamp-2 text-lg font-bold text-gray-900 transition-colors duration-300 group-hover:text-primary sm:text-xl">
                     {cert.title}
                   </h3>
 
                   {cert.description && (
-                    <p className="line-clamp-2 text-sm text-gray-600">
+                    <p
+                      className={`text-sm text-gray-600 ${cert.featured ? 'line-clamp-3' : 'line-clamp-2'}`}
+                    >
                       {cert.description}
                     </p>
                   )}
 
-                  {/* Category Tag */}
-                  <div className="mt-4 flex items-center gap-2">
+                  <div className="mt-4 flex flex-wrap items-center gap-2">
+                    {!cert.featured && cert.badge && (
+                      <span className="inline-flex items-center rounded-full bg-secondary/10 px-3 py-1.5 text-xs font-medium text-secondary-dark">
+                        {cert.badge}
+                      </span>
+                    )}
+
                     <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-white">
-                      {cert.category}
+                      {CERTIFICATE_CATEGORY_LABELS[cert.category]}
                     </span>
                   </div>
                 </div>
 
-                {/* Bottom Border Accent */}
                 <div className="absolute bottom-0 left-0 right-0 h-1 origin-left scale-x-0 transform bg-gradient-to-r from-primary via-secondary to-primary transition-transform duration-500 group-hover:scale-x-100" />
               </div>
-            </div>
+            </button>
           ))}
         </div>
 
-        {/* Summary Banner */}
         <div className="mt-12 text-center sm:mt-16">
           <div className="inline-flex flex-col items-center gap-4 rounded-2xl bg-white px-6 py-4 shadow-lg transition-shadow duration-300 hover:shadow-xl sm:flex-row sm:px-8 sm:py-6">
             <span className="text-4xl">📜</span>
-            <p className="text-center text-gray-600 sm:text-left">
-              <strong className="text-lg text-gray-900">8 شهادات مهنية</strong>
+            <p className="text-center text-gray-600 sm:text-right">
+              <strong className="text-lg text-gray-900">
+                {totalCertificates} شهادات مهنية
+              </strong>
               <br className="hidden sm:block" />
-              <span className="text-sm">من مؤسسات معترف بها عالمياً</span>
+              <span className="text-sm">من جهات محلية ودولية معترف بها</span>
             </p>
           </div>
         </div>

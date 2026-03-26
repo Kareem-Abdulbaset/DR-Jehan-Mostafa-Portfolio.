@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import gsap from 'gsap';
+import { CERTIFICATES_COUNT } from '@/data/certificates';
 import { SITE_INFO } from '@/lib/constants';
 
 export default function Hero() {
@@ -32,7 +33,7 @@ export default function Hero() {
 
   const stats = [
     { value: '5+', label: 'سنوات خبرة', icon: '🎯' },
-    { value: '6', label: 'شهادات معتمدة', icon: '🏆' },
+    { value: String(CERTIFICATES_COUNT), label: 'شهادات معتمدة', icon: '🏆' },
     { value: '23+', label: 'عملاء سعداء', icon: '💚' },
   ];
 
@@ -125,17 +126,19 @@ export default function Hero() {
               {/* Main CTA - EXTRA LARGE & Very Prominent */}
               <Link
                 href="/contact"
-                className="group relative inline-flex w-full max-w-xl items-center justify-center gap-4 overflow-hidden rounded-3xl bg-gradient-to-r from-primary via-primary-dark to-secondary px-10 py-6 text-xl font-extrabold text-white shadow-2xl shadow-primary/50 transition-all duration-300 hover:scale-[1.05] hover:shadow-[0_25px_80px_rgba(143,188,143,0.6)] sm:px-16 sm:py-8 sm:text-2xl md:px-20 md:py-9 md:text-3xl lg:w-auto lg:text-4xl animate-pulse-glow"
+                className="group relative inline-flex w-full max-w-xl animate-pulse-glow items-center justify-center gap-4 overflow-hidden rounded-3xl bg-gradient-to-r from-primary via-primary-dark to-secondary px-10 py-6 text-xl font-extrabold text-white shadow-2xl shadow-primary/50 transition-all duration-300 hover:scale-[1.05] hover:shadow-[0_25px_80px_rgba(143,188,143,0.6)] sm:px-16 sm:py-8 sm:text-2xl md:px-20 md:py-9 md:text-3xl lg:w-auto lg:text-4xl"
               >
                 {/* Shimmer effect */}
                 <span className="absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-white/0 via-white/40 to-white/0 transition-transform duration-700 group-hover:translate-x-[100%]" />
-                
+
                 {/* Icon */}
-                <span className="relative text-3xl sm:text-4xl md:text-5xl animate-bounce">📅</span>
-                
+                <span className="relative animate-bounce text-3xl sm:text-4xl md:text-5xl">
+                  📅
+                </span>
+
                 {/* Text */}
                 <span className="relative">احجز استشارتك الآن</span>
-                
+
                 {/* Arrow */}
                 <svg
                   className="relative h-7 w-7 rotate-180 transition-transform duration-300 group-hover:-translate-x-3 sm:h-8 sm:w-8 md:h-10 md:w-10"
@@ -231,7 +234,7 @@ export default function Hero() {
               </div>
 
               {/* Floating Card - Experience */}
-              <div className="animate-float absolute -left-2 bottom-8 rounded-2xl border border-gray-100 bg-white p-3 shadow-xl shadow-gray-900/10 sm:-left-6 sm:bottom-12 sm:p-4">
+              <div className="absolute -left-2 bottom-8 animate-float rounded-2xl border border-gray-100 bg-white p-3 shadow-xl shadow-gray-900/10 sm:-left-6 sm:bottom-12 sm:p-4">
                 <div className="flex items-center gap-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary-dark shadow-lg shadow-primary/30 sm:h-12 sm:w-12">
                     <span className="text-sm font-bold text-white sm:text-base">
@@ -249,7 +252,7 @@ export default function Hero() {
 
               {/* Floating Card - Certified */}
               <div
-                className="animate-float absolute -bottom-2 -right-1 rounded-xl bg-gradient-to-r from-secondary to-yellow-500 p-2.5 shadow-xl shadow-secondary/30 sm:-bottom-4 sm:-right-4 sm:rounded-2xl sm:p-3"
+                className="absolute -bottom-2 -right-1 animate-float rounded-xl bg-gradient-to-r from-secondary to-yellow-500 p-2.5 shadow-xl shadow-secondary/30 sm:-bottom-4 sm:-right-4 sm:rounded-2xl sm:p-3"
                 style={{ animationDelay: '1s' }}
               >
                 <div className="flex items-center gap-2 text-white">
