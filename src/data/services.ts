@@ -26,7 +26,7 @@ export const services: Service[] = [
     description: 'برنامج مكثف لمدة شهر للبدء في رحلة التغيير مع متابعة دقيقة.',
     icon: '/images/services/programs.svg',
     duration: 'شهر واحد',
-    price: '300 جنيه',
+    price: '450 جنيه',
     features: [
       'تتبع التقدم أسبوعياً',
       'تعديلات مستمرة',
@@ -40,10 +40,10 @@ export const services: Service[] = [
     description: 'الخيار الأمثل لتحقيق نتائج مستدامة وتغيير العادات الغذائية.',
     icon: '/images/services/programs.svg',
     duration: '3 أشهر',
-    price: '700 جنيه',
+    price: '850 جنيه',
     features: [
       'جميع مميزات الباقة الشهرية',
-      'توفير 200 جنيه',
+      'توفير 500 جنيه',
       'ورش عمل مصغرة',
       'خطط مرنة للمناسبات',
     ],
@@ -56,7 +56,7 @@ export const services: Service[] = [
     duration: '6 أشهر',
     price: '1400 جنيه',
     features: [
-      'أفضل قيمة (توفير 400 جنيه)',
+      'أفضل قيمة (توفير 1300 جنيه)',
       'متابعة شاملة طويلة الأمد',
       'تثبيت الوزن بعد النزول',
       'استشارات غير محدودة',

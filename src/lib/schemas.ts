@@ -142,8 +142,8 @@ export const activityLevelLabels: Record<ActivityLevel, string> = {
  */
 export const packageLabels: Record<PackageType, string> = {
   initial: 'الكشف الدوري (150 جنيه)',
-  monthly: 'باقة متابعة شهرية (300 جنيه)',
-  '3month': 'باقة متابعة 3 شهور (700 جنيه)',
+  monthly: 'باقة متابعة شهرية (450 جنيه)',
+  '3month': 'باقة متابعة 3 شهور (850 جنيه)',
   '6month': 'باقة 6 شهور (1400 جنيه)',
 };
 
@@ -152,8 +152,8 @@ export const packageLabels: Record<PackageType, string> = {
  */
 export const packagePrices: Record<PackageType, string> = {
   initial: '150 جنيه',
-  monthly: '300 جنيه',
-  '3month': '700 جنيه',
+  monthly: '450 جنيه',
+  '3month': '850 جنيه',
   '6month': '1400 جنيه',
 };
 
